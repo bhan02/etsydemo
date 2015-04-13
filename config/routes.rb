@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+
   devise_for :users
-  devise_for :models
-  resources :listings
+  #Commenting out because this line does not exist in Alex's code  "devise_for :models"
+  resources :listings do
+    resources :orders
+  end  
+
   get 'pages/about'
   get 'pages/contact'
   get 'seller' => "listings#seller"
