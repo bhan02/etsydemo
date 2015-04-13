@@ -1,0 +1,24 @@
+<div class="center">
+  <h2>Your Purchase History</h2>
+</div> 
+
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>Image</th>
+    <th>Item</th>
+    <th>Price</th>
+    <th>Seller</th>
+    <th>Date Purchased</th>
+  </tr>  
+
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= image_tag order.listing.image.url(:thumb) %>
+      <td><%= order.listing.name %></td>
+      <td><%= number_to_currency(order.listing.price) %></td>
+      <td><%= order.seller.name %></td>
+      <td><%= order.created_at.strftime("%B %-d, %Y") %></td>
+      
+    </tr>
+  <% end %>
+</table> 
